@@ -23,7 +23,7 @@ class ChatProvider extends ChangeNotifier {
   bool _isLoading = false;
 
   /// Model type
-  static const String _modelType = 'gemini-2.0-flash';
+  static const String _modelType = 'gemini-2.5-pro-preview-03-25';
 
   // Chat state
   String _currentChatId = '';

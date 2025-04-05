@@ -37,35 +37,32 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           bottomNavigationBar: Consumer<ChatProvider>(
             builder: (context, chatProvider, child) {
-              return BottomNavigationBar(
-                currentIndex: chatProvider.currentIndex,
+              return NavigationBar(
+                selectedIndex: chatProvider.currentIndex,
                 elevation: 0,
-                selectedItemColor: Theme.of(context).colorScheme.primary,
-                unselectedItemColor: Theme.of(context).colorScheme.tertiary,
-                onTap: (index) {
-                  chatProvider.setCurrentIndex(newIndex: index);
-                  chatProvider.pageController.jumpToPage(index);
-                  setState(() {});
-                },
-                items: const [
-                  BottomNavigationBarItem(
+                destinations: const [
+                  NavigationDestination(
                     icon: Icon(CupertinoIcons.money_dollar),
                     label: 'Stories',
                   ),
-                  BottomNavigationBarItem(
+                  NavigationDestination(
                     icon: Icon(CupertinoIcons.chat_bubble_2),
-                    // icon: Icon(CupertinoIcons.timelapse),
                     label: 'Chat ',
                   ),
-                  BottomNavigationBarItem(
+                  NavigationDestination(
                     icon: Icon(Icons.history),
                     label: 'Chat History',
                   ),
-                  BottomNavigationBarItem(
+                  NavigationDestination(
                     icon: Icon(CupertinoIcons.person),
                     label: 'Profile',
                   ),
                 ],
+                onDestinationSelected: (index) {
+                  chatProvider.setCurrentIndex(newIndex: index);
+                  chatProvider.pageController.jumpToPage(index);
+                  setState(() {});
+                },
               );
             },
           ),
